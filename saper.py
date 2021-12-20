@@ -192,28 +192,28 @@ def newgame():
 	drawtilesInit()
 	newbombs()
 	
-	
-while True:
-    gamespace.fill(white)
-    drawtiles()
-    
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
-        elif event.type == MOUSEMOTION:
-            MouseTile = cursortile()
-            if not inside():
-    
-                MouseTile = sample
-        elif event.type == MOUSEBUTTONUP:
-            if inside():
-                if event.button == 1:
-                    MouseTile.flag = getbombs(MouseTile)
-                    if MouseTile.flag == 0:
-                        tiles_in_queue.append(MouseTile)
-                        getzeros(MouseTile)
-                    if MouseTile.bombtest: MouseTile.flag = 9
-    if MouseTile.flag == -3: gamespace.blit(MouseBlock, MouseTile.loc)    
-    pygame.display.update()
-    timecount.tick(50)
+if __name__ == "__main__":	
+	while True:
+		gamespace.fill(white)
+		drawtiles()
+		
+		for event in pygame.event.get():
+			if event.type == QUIT:
+				pygame.quit()
+				sys.exit()
+			elif event.type == MOUSEMOTION:
+				MouseTile = cursortile()
+				if not inside():
+		
+					MouseTile = sample
+			elif event.type == MOUSEBUTTONUP:
+				if inside():
+					if event.button == 1:
+						MouseTile.flag = getbombs(MouseTile)
+						if MouseTile.flag == 0:
+							tiles_in_queue.append(MouseTile)
+							getzeros(MouseTile)
+						if MouseTile.bombtest: MouseTile.flag = 9
+		if MouseTile.flag == -3: gamespace.blit(MouseBlock, MouseTile.loc)    
+		pygame.display.update()
+		timecount.tick(50)
